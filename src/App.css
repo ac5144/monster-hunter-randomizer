@@ -4,7 +4,7 @@
 }
 
 .Screen {
-  flex: 1;
+  min-height: 100vh;
   background-color: #222;
   color: whitesmoke;
 }
