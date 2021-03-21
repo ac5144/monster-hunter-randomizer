@@ -1,7 +1,9 @@
 .Navbar {
     display: flex;
+    width: 100vw;
     background-color: darkgreen;
     color: whitesmoke;
+    position: fixed;
 
     height: 50px;
 }
