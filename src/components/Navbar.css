@@ -2,26 +2,32 @@
     display: flex;
     background-color: darkgreen;
     color: whitesmoke;
+
+    height: 50px;
 }
 
 .Navbar-Logo {
     display: inline-flex;
     align-items: center;
-    padding: 5px;
     margin: 0px 40px;
+
+    font-size: 16px;
 }
 
 .Navbar-Item-Container {
     display: flex;
     flex-direction: row;
+    width: 20%;
 }
 
 .Navbar-Item {
-    display: inline;
+    display: inline-flex;
+    align-items: center;
     flex: 1;
+    margin: 0px 50px;
+    justify-content: center;
 
-    margin: 0px 10px;
-    padding: 5px;
+    font-size: 14px;
 }
 
 .Navbar-Item:hover {
@@ -31,4 +37,5 @@
 .Navbar-Item a {
     text-decoration: none;
     color: whitesmoke;
+    padding: 10px;
 }
