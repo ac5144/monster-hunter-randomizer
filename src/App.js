@@ -1,27 +1,16 @@
 import './App.css';
 import { Switch, Route, Redirect } from 'react-router';
 
-import Navbar from './components/Navbar'
+import Navbar from './components/Navbar';
+import Randomizer from './components/Randomizer';
+
 
 function App() {
   return (
     <div className="App">
       <div className="Screen">
         <Navbar />
-        <Switch>
-          <Route path="/MHW">
-            MHW Screen
-          </Route>
-          <Route path="/MHWI">
-            MHWI Screen
-          </Route>
-          <Route path="/Rise">
-            Rise Screen
-          </Route>
-          <Route path="/">
-            <Redirect to="/MHW" />
-          </Route>
-        </Switch>
+        <Randomizer />
       </div>
     </div>
   );
