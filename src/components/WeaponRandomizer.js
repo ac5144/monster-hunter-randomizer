@@ -1,11 +1,12 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { setCurrentWeapon, setShuffle } from '../redux/features/weaponsSlice';
+import { setCurrentWeapon, setPreviousWeapon, setShuffle } from '../redux/features/weaponsSlice';
 
 export default function WeaponRandomizer() {
     const dispatch = useDispatch();
-    const { currentWeapon, shuffle} = useSelector(state => state.weapons);
+
+    const { currentWeapon, previousWeapon, shuffle, noRepeats } = useSelector(state => state.weapons);
 
     const weapons = [
         'great sword', 'long sword', 'hammer', 'dual blades', 'sword and shield', 'light bowgun', 'heavy bowgun', 
@@ -16,35 +17,42 @@ export default function WeaponRandomizer() {
         if (shuffle) { return; }
 
         dispatch(setShuffle(true));
+        dispatch(setPreviousWeapon(currentWeapon));
 
         const shuffleInterval = setInterval(() => {
             let newWeapon = currentWeapon;
 
             while (newWeapon === currentWeapon) {
-                const newIndex = Math.floor(Math.random() * weapons.length);
-                newWeapon = weapons[newIndex];
+                newWeapon = weapons[Math.floor(Math.random() * weapons.length)];
             }
 
             dispatch(setCurrentWeapon(newWeapon));
         }, 100);
 
-        return shuffleInterval;
-    };
-
-    const randomizeBtn = () => {
-        const shuffleInterval = startShuffle();
-
-        setTimeout(() => {
+        const shuffleTimeout = setTimeout(() => {
             clearInterval(shuffleInterval);
             dispatch(setShuffle(false));
+            setRandomWeapon();
         }, 3000);
+
+        return shuffleTimeout;
     };
+
+    const setRandomWeapon = () => {
+        let newWeapon;
+
+        do {
+            newWeapon = weapons[Math.floor(Math.random() * weapons.length)];
+        } while (noRepeats && newWeapon === previousWeapon);
+
+        dispatch(setCurrentWeapon(newWeapon));
+    }
 
     return (
         <div>
             <div>{currentWeapon}</div>
             <button 
-                onClick={randomizeBtn}
+                onClick={startShuffle}
                 disabled={shuffle}>
                 Randomize
             </button>

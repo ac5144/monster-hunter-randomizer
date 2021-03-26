@@ -4,12 +4,16 @@ export const weaponsSlice = createSlice({
     name: 'weapons',
     initialState: {
         currentWeapon: 'None',
+        previousWeapon: 'None',
         shuffle: false,
         noRepeats: false,
     },
     reducers: {
         setCurrentWeapon(state, action) {
             state.currentWeapon = action.payload;
+        },
+        setPreviousWeapon(state, action) {
+            state.previousWeapon = action.payload;
         },
         setShuffle(state, action) {
             state.shuffle = action.payload;
@@ -22,6 +26,7 @@ export const weaponsSlice = createSlice({
 
 export const {
     setCurrentWeapon,
+    setPreviousWeapon,
     setShuffle,
     setNoRepeats,
 } = weaponsSlice.actions;
