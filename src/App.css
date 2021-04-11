@@ -8,3 +8,15 @@
   background-color: #222;
   color: whitesmoke;
 }
+
+.filterContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.randomizerContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

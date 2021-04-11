@@ -1,5 +1,4 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router';
 
 import { Provider } from 'react-redux';
 
@@ -9,6 +8,7 @@ import Navbar from './components/Navbar';
 import WeaponRandomizer from './components/WeaponRandomizer';
 import WeaponFilter from './components/WeaponFilter';
 import MonsterRandomizer from './components/MonsterRandomizer';
+import MonsterFilter from './components/MonsterFilter';
 
 import './App.css';
 
@@ -18,10 +18,15 @@ function App() {
       <Provider store={store}>
         <div className="Screen">
           <Navbar />
-          <WeaponRandomizer />
-          <WeaponFilter />
+          <div className="randomizerContainer">
+            <WeaponRandomizer />
+            <MonsterRandomizer />
+          </div>
           <hr />
-          <MonsterRandomizer />
+          <div className="filterContainer">
+            <WeaponFilter />
+            <MonsterFilter />
+          </div>
         </div>
       </Provider>
     </div>
