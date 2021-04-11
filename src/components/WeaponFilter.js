@@ -39,7 +39,6 @@ export default function WeaponFilter() {
         <div className="weaponFilter">
             <input type="checkbox" onChange={handleNoRepeats} />
             <label>No repeats</label>
-            <hr />
             {weaponToggles}
         </div>
     );

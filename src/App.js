@@ -6,7 +6,9 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 
 import Navbar from './components/Navbar';
-import Randomizer from './components/Randomizer';
+import WeaponRandomizer from './components/WeaponRandomizer';
+import WeaponFilter from './components/WeaponFilter';
+import MonsterRandomizer from './components/MonsterRandomizer';
 
 import './App.css';
 
@@ -16,7 +18,10 @@ function App() {
       <Provider store={store}>
         <div className="Screen">
           <Navbar />
-          <Randomizer />
+          <WeaponRandomizer />
+          <WeaponFilter />
+          <hr />
+          <MonsterRandomizer />
         </div>
       </Provider>
     </div>

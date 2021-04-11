@@ -1,16 +1,62 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
-import WeaponRandomizer from './WeaponRandomizer';
-import WeaponFilter from './WeaponFilter';
+export default function WeaponRandomizer({
+    setCurrentItem,
+    setPreviousItem,
+    setShuffle,
+    currentItem,
+    previousItem,
+    shuffle,
+    noRepeats,
+    itemPool,
+    items
+}) {
+    const dispatch = useDispatch();
 
-import './Randomizer.css';
+    const startShuffle = () => {
+        if (shuffle) { return; }
 
-export default function Randomizer() {
+        dispatch(setShuffle(true));
+        dispatch(setPreviousItem(currentItem));
 
-    return(
-        <div className="randomizerContainer">
-            <WeaponRandomizer />
-            <WeaponFilter />
+        const shuffleInterval = setInterval(() => {
+            let newItem = currentItem;
+
+            while (newItem === currentItem) {
+                newItem = items[Math.floor(Math.random() * items.length)];
+            }
+
+            dispatch(setCurrentItem(newItem));
+        }, 100);
+
+        const shuffleTimeout = setTimeout(() => {
+            clearInterval(shuffleInterval);
+            dispatch(setShuffle(false));
+            setRandomItem();
+        }, 3000);
+
+        return shuffleTimeout;
+    };
+
+    const setRandomItem = () => {
+        let newItem;
+
+        do {
+            newItem = itemPool[Math.floor(Math.random() * itemPool.length)];
+        } while (noRepeats && newItem === previousItem);
+
+        dispatch(setCurrentItem(newItem));
+    }
+
+    return (
+        <div>
+            <div>{currentItem}</div>
+            <button 
+                onClick={startShuffle}
+                disabled={shuffle}>
+                Randomize
+            </button>
         </div>
-    )
-}
+    );
+} 
