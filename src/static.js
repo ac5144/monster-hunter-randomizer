@@ -14,3 +14,14 @@ export const WEAPONS = [
     'lance', 
     'gun lance'
 ];
+
+export const MONSTERS = [
+    'aknosom',
+    'almudron',
+    'anjanath',
+    'arzuro',
+    'barioth',
+    'barroth',
+    'basarios',
+    'bishaten',
+]
