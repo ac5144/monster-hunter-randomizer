@@ -3,15 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { setCurrentWeapon, setPreviousWeapon, setShuffle } from '../redux/features/weaponsSlice';
 
+import { WEAPONS } from '../static';
+
 export default function WeaponRandomizer() {
     const dispatch = useDispatch();
 
-    const { currentWeapon, previousWeapon, shuffle, noRepeats } = useSelector(state => state.weapons);
-
-    const weapons = [
-        'great sword', 'long sword', 'hammer', 'dual blades', 'sword and shield', 'light bowgun', 'heavy bowgun', 
-        'hunting horn', 'insect glaive', 'bow', 'charge blade', 'switch axe', 'lance', 'gun lance'
-    ];
+    const { currentWeapon, previousWeapon, shuffle, noRepeats, weaponPool } = useSelector(state => state.weapons);
 
     const startShuffle = () => {
         if (shuffle) { return; }
@@ -23,7 +20,7 @@ export default function WeaponRandomizer() {
             let newWeapon = currentWeapon;
 
             while (newWeapon === currentWeapon) {
-                newWeapon = weapons[Math.floor(Math.random() * weapons.length)];
+                newWeapon = WEAPONS[Math.floor(Math.random() * WEAPONS.length)];
             }
 
             dispatch(setCurrentWeapon(newWeapon));
@@ -42,7 +39,7 @@ export default function WeaponRandomizer() {
         let newWeapon;
 
         do {
-            newWeapon = weapons[Math.floor(Math.random() * weapons.length)];
+            newWeapon = weaponPool[Math.floor(Math.random() * weaponPool.length)];
         } while (noRepeats && newWeapon === previousWeapon);
 
         dispatch(setCurrentWeapon(newWeapon));

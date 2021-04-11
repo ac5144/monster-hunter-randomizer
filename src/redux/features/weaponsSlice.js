@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import { WEAPONS } from '../../static';
+
 export const weaponsSlice = createSlice({
     name: 'weapons',
     initialState: {
@@ -7,6 +9,7 @@ export const weaponsSlice = createSlice({
         previousWeapon: 'None',
         shuffle: false,
         noRepeats: false,
+        weaponPool: WEAPONS,
     },
     reducers: {
         setCurrentWeapon(state, action) {
@@ -21,6 +24,9 @@ export const weaponsSlice = createSlice({
         setNoRepeats(state, action) {
             state.noRepeats = action.payload;
         },
+        setWeaponPool(state, action) {
+            state.weaponPool = action.payload;
+        },
     }
 });
 
@@ -29,6 +35,7 @@ export const {
     setPreviousWeapon,
     setShuffle,
     setNoRepeats,
+    setWeaponPool,
 } = weaponsSlice.actions;
 
 export default weaponsSlice.reducer;
