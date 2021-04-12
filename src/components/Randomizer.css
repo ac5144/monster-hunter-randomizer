@@ -4,10 +4,7 @@
     align-items: center;
 }
 
-.Randomizer button {
-    background-color: green;
-    color: black;
-
+.Randomizer .MainButton {
     margin: 1rem 0rem;
     padding: 0.5rem;
     font-size: 1.6rem;
@@ -15,10 +12,10 @@
     width: 10rem;
 }
 
-.Randomizer button:disabled {
+.Randomizer .MainButton:disabled {
     opacity: 0.5;
 }
 
 .Randomizer img {
-    width: 20rem;
+    width: 15rem;
 }

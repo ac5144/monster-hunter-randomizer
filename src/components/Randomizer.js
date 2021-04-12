@@ -1,6 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
+import MainButton from './MainButton';
+
 import './Randomizer.css';
 
 export default function WeaponRandomizer({
@@ -54,11 +56,10 @@ export default function WeaponRandomizer({
 
     return (
         <div className="Randomizer">
-            <button 
+            <MainButton 
                 onClick={startShuffle}
-                disabled={shuffle}>
-                Randomize
-            </button>
+                buttonText="Randomize"
+                disabled={shuffle}/>
             <img src={`/assets/images/${type}/${currentItem}.png`} alt={currentItem} />
         </div>
     );

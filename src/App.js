@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Provider } from 'react-redux';
 
@@ -9,10 +9,14 @@ import WeaponRandomizer from './components/WeaponRandomizer';
 import WeaponFilter from './components/WeaponFilter';
 import MonsterRandomizer from './components/MonsterRandomizer';
 import MonsterFilter from './components/MonsterFilter';
+import MainButton from './components/MainButton';
 
 import './App.css';
 
 function App() {
+  const [showFilters, setShowFilters] = useState(false);
+  const filterClass = showFilters ? 'filterContainer' : 'filterContainer hidden';
+
   return (
     <div className="App">
       <Provider store={store}>
@@ -22,8 +26,9 @@ function App() {
             <WeaponRandomizer />
             <MonsterRandomizer />
           </div>
-          <hr />
-          <div className="filterContainer">
+
+          <MainButton onClick={() => setShowFilters(!showFilters)} buttonText="Filters" />
+          <div className={filterClass}>
             <WeaponFilter />
             <MonsterFilter />
           </div>

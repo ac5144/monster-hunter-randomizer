@@ -24,4 +24,5 @@ export const MONSTERS = [
     'barroth',
     'basarios',
     'bishaten',
+    'diablos',
 ]
