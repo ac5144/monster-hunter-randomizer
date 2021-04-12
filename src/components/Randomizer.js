@@ -1,6 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
+import './Randomizer.css';
+
 export default function WeaponRandomizer({
     setCurrentItem,
     setPreviousItem,
@@ -10,7 +12,8 @@ export default function WeaponRandomizer({
     shuffle,
     noRepeats,
     itemPool,
-    items
+    items,
+    type,
 }) {
     const dispatch = useDispatch();
 
@@ -47,16 +50,16 @@ export default function WeaponRandomizer({
         } while (noRepeats && newItem === previousItem);
 
         dispatch(setCurrentItem(newItem));
-    }
+    };
 
     return (
-        <div>
-            <div>{currentItem}</div>
+        <div className="Randomizer">
             <button 
                 onClick={startShuffle}
                 disabled={shuffle}>
                 Randomize
             </button>
+            <img src={`/assets/images/${type}/${currentItem}.png`} alt={currentItem} />
         </div>
     );
 } 

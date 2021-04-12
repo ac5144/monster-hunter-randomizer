@@ -1,0 +1,13 @@
+.Filter {
+    font-size: 1.4em;
+}
+
+.FilterItem {
+    margin-top: 0.5em;
+}
+
+.FilterGroup {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}

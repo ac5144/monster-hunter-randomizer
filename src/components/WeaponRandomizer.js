@@ -21,6 +21,7 @@ export default function WeaponRandomizer() {
             noRepeats={noRepeats}
             itemPool={weaponPool}
             items={WEAPONS}
+            type={'weapons'}
         />
     );
 } 

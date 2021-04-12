@@ -5,7 +5,7 @@ import { WEAPONS } from '../../static';
 export const weaponsSlice = createSlice({
     name: 'weapons',
     initialState: {
-        currentWeapon: 'None',
+        currentWeapon: WEAPONS[0],
         previousWeapon: 'None',
         shuffle: false,
         noRepeats: false,

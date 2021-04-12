@@ -5,7 +5,7 @@ import { MONSTERS } from '../../static';
 export const monstersSlice = createSlice({
     name: 'monsters',
     initialState: {
-        currentMonster: 'None',
+        currentMonster: MONSTERS[0],
         previousMonster: 'None',
         shuffle: false,
         noRepeats: false,

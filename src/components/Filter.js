@@ -1,6 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
+import './Filter.css';
+
 export default function Filter({
     setNoRepeats,
     setItemPool,
@@ -26,7 +28,7 @@ export default function Filter({
     };
 
     const itemTogglers = items.map(weapon =>
-        <div>
+        <div className="FilterItem">
             <input type="checkbox" defaultChecked onChange={event => {
                 handleItemToggle(event, weapon);
             }}/>
@@ -35,10 +37,11 @@ export default function Filter({
     )
 
     return (
-        <div>
-            <input type="checkbox" onChange={handleNoRepeats} />
-            <label>No repeats</label>
-            {itemTogglers}
+        <div className="Filter">
+            <input type="checkbox" onChange={handleNoRepeats} /> <label>No repeats</label>
+            <div className="FilterGroup">
+                {itemTogglers}
+            </div>
         </div>
     );
 }

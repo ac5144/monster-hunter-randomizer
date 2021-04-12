@@ -1,25 +1,25 @@
 export const WEAPONS = [
-    'great sword', 
-    'long sword', 
+    'great_sword', 
+    'long_sword', 
     'hammer', 
-    'dual blades', 
-    'sword and shield', 
-    'light bowgun', 
-    'heavy bowgun', 
-    'hunting horn', 
-    'insect glaive', 
+    'dual_blades', 
+    'sword_and_shield', 
+    'light_bowgun', 
+    'heavy_bowgun', 
+    'hunting_horn', 
+    'insect_glaive', 
     'bow', 
-    'charge blade', 
-    'switch axe', 
+    'charge_blade', 
+    'switch_axe', 
     'lance', 
-    'gun lance'
+    'gunlance'
 ];
 
 export const MONSTERS = [
     'aknosom',
     'almudron',
     'anjanath',
-    'arzuro',
+    'arzuros',
     'barioth',
     'barroth',
     'basarios',

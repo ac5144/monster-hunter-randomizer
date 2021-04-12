@@ -21,6 +21,7 @@ export default function MonsterRandomizer() {
             noRepeats={noRepeats}
             itemPool={monsterPool}
             items={MONSTERS}
+            type={'monsters'}
         />
     );
 }
