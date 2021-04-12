@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import MainButton from './MainButton';
@@ -18,6 +18,7 @@ export default function WeaponRandomizer({
     type,
 }) {
     const dispatch = useDispatch();
+    const [displayItem, setDisplayItem] = useState(items[0]);
 
     const startShuffle = () => {
         if (shuffle) { return; }
@@ -32,7 +33,7 @@ export default function WeaponRandomizer({
                 newItem = items[Math.floor(Math.random() * items.length)];
             }
 
-            dispatch(setCurrentItem(newItem));
+            setDisplayItem(newItem);
         }, 100);
 
         const shuffleTimeout = setTimeout(() => {
@@ -60,7 +61,7 @@ export default function WeaponRandomizer({
                 onClick={startShuffle}
                 buttonText="Randomize"
                 disabled={shuffle}/>
-            <img src={`/assets/images/${type}/${currentItem.id}.png`} alt={currentItem.id} />
+            <img src={`/assets/images/${type}/${shuffle ? displayItem.id : currentItem.id}.png`} alt={currentItem.id} />
         </div>
     );
 } 

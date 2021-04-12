@@ -2,14 +2,16 @@
     display: flex;
     flex-direction: column;
     font-size: 1.2rem;
+    flex-grow: 1;
 }
 
 .FilterItem {
-    margin-top: 0.5rem;
+    margin: 0.5rem;
 }
 
 .FilterGroup {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    max-height: 40vh;
 }

@@ -42,7 +42,7 @@ export default function Filter({
 
     return (
         <div className="Filter">
-            <div>
+            <div className="FilterItem">
                 <input type="checkbox" onChange={handleNoRepeats} /> 
                 <label>No repeats</label>
             </div>

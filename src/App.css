@@ -13,10 +13,9 @@
 .filterContainer {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   width: 80%;
   margin: auto;
-  padding: 0.5rem;
 
   border: thin solid gray;
   border-radius: 0.5rem;
