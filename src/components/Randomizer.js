@@ -28,7 +28,7 @@ export default function WeaponRandomizer({
         const shuffleInterval = setInterval(() => {
             let newItem = currentItem;
 
-            while (newItem === currentItem) {
+            while (newItem.id === currentItem.id) {
                 newItem = items[Math.floor(Math.random() * items.length)];
             }
 
@@ -49,7 +49,7 @@ export default function WeaponRandomizer({
 
         do {
             newItem = itemPool[Math.floor(Math.random() * itemPool.length)];
-        } while (noRepeats && newItem === previousItem);
+        } while (noRepeats && newItem.id === previousItem.id);
 
         dispatch(setCurrentItem(newItem));
     };
@@ -60,7 +60,7 @@ export default function WeaponRandomizer({
                 onClick={startShuffle}
                 buttonText="Randomize"
                 disabled={shuffle}/>
-            <img src={`/assets/images/${type}/${currentItem}.png`} alt={currentItem} />
+            <img src={`/assets/images/${type}/${currentItem.id}.png`} alt={currentItem.id} />
         </div>
     );
 } 

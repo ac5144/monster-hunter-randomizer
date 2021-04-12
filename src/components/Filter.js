@@ -15,30 +15,37 @@ export default function Filter({
         dispatch(setNoRepeats(event.target.checked));
     };
 
-    const handleItemToggle = (event, itemName) => {
+    const handleItemToggle = (event, toggleItem) => {
         let filteredItemPool;
 
         if (!event.target.checked) {
-            filteredItemPool = itemPool.filter(weapon => weapon !== itemName);
+            filteredItemPool = itemPool.filter(item => item.id !== toggleItem.id);
         } else {
-            filteredItemPool = [...itemPool, itemName];
+            filteredItemPool = [...itemPool, toggleItem];
         }
 
         dispatch(setItemPool(filteredItemPool));
     };
 
-    const itemTogglers = items.map(weapon =>
+    const itemTogglers = items.map(item =>
         <div className="FilterItem">
-            <input type="checkbox" defaultChecked onChange={event => {
-                handleItemToggle(event, weapon);
+            <input 
+                id={item.id} 
+                type="checkbox" 
+                defaultChecked 
+                onChange={event => {
+                    handleItemToggle(event, item);
             }}/>
-            <label>{weapon}</label>
+            <label for={item.id}>{item.name}</label>
         </div>
     )
 
     return (
         <div className="Filter">
-            <input type="checkbox" onChange={handleNoRepeats} /> <label>No repeats</label>
+            <div>
+                <input type="checkbox" onChange={handleNoRepeats} /> 
+                <label>No repeats</label>
+            </div>
             <div className="FilterGroup">
                 {itemTogglers}
             </div>
