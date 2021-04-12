@@ -19,18 +19,24 @@ export default function Randomizer({
 }) {
     const dispatch = useDispatch();
     const [displayItem, setDisplayItem] = useState(items[0]);
-    const [images, setImages] = useState({});
 
     useEffect(() => {
-        const imagesObj = {};
+        cacheImages(items);
+    }, []);
 
-        items.forEach(item => {
-            const newImage = (<img src={`/assets/images/${type}/${item.id}.png`} alt={item.id} />);
-            imagesObj[item.id] = newImage;
+    const cacheImages = async (src) => {
+        const promises = await src.map(s => {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+
+                img.src = `/assets/images/${type}/${s.id}.png`;
+                img.onload = resolve();
+                img.onerror = reject();
+            });
         });
 
-        setImages(imagesObj);
-    }, [items]);
+        await Promise.all(promises);
+    }
 
     const startShuffle = () => {
         if (shuffle) { return; }
@@ -73,7 +79,7 @@ export default function Randomizer({
                 onClick={startShuffle}
                 buttonText="Randomize"
                 disabled={shuffle}/>
-            {shuffle ? images[displayItem.id] : images[currentItem.id]}
+            <img src={`/assets/images/${type}/${shuffle ? displayItem.id : currentItem.id}.png`} alt={currentItem.id} />
         </div>
     );
 } 
